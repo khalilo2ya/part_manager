@@ -1,5 +1,6 @@
 
 from tkinter import *
+from tkinter import  messagebox
 from db import Database
 
 
@@ -11,10 +12,36 @@ def populate_list():
         parts_list.insert(END, row)
 
 def add_item():
-    print('Add')
+    if(part_text.get()=='' or customer_text.get()=='' or retailer_text.get()=='' or price_text.get()=='' ):
+        messagebox.showerror('Required fields','Please include all fiels')
+        return
+    
+    db.insert(part_text.get(), customer_text.get(), retailer_text.get(), price_text.get())
+    parts_list.delete(0, END)
+    parts_list.insert(END, (part_text.get(), customer_text.get(), retailer_text.get(), price_text.get()) )
+    populate_list()
 
 def update_item():
     print('Update')
+
+
+def select_item(event):
+    global selected_item
+    index=parts_list.curselection()[0]
+    selected_item=parts_list.get(index)
+    #print(selected_item)
+    part_entry.delete(0,END)
+    part_entry.insert(END, selected_item[1])
+    customer_entry.delete(0,END)
+    customer_entry.insert(END, selected_item[2])
+    retailer_entry.delete(0,END)
+    retailer_entry.insert(END, selected_item[3])
+    price_entry.delete(0,END)
+    price_entry.insert(END, selected_item[4])
+
+
+
+
 
 def remove_item():
     print('Remove')
@@ -60,6 +87,9 @@ scrollbar.grid(row=3, column=3)
 #set scroll to listbox
 parts_list.configure(yscrollcommand=scrollbar.set)
 scrollbar.configure(command=parts_list.yview)
+
+#bind selected item from listbox
+parts_list.bind('<<ListboxSelect>>',select_item)
 
 #Buttons
 add_btn= Button(app, text='Add part', width=12, command=add_item)
