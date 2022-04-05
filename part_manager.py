@@ -126,3 +126,6 @@ app.title('Part manager')
 app.geometry('700x350')
 # start program
 app.mainloop()
+
+
+# run this command to make exe : pyinstaller part_manager.py --onefile --windowed
