@@ -1,9 +1,14 @@
 
 from tkinter import *
+from db import Database
 
+
+db=Database('store.db')
 
 def populate_list():
-    print('Populate')
+    parts_list.delete(0, END)
+    for row in db.fetch():
+        parts_list.insert(END, row)
 
 def add_item():
     print('Add')
@@ -68,6 +73,9 @@ update_btn.grid(row=2, column=2)
 
 clear_btn= Button(app, text='Clear part', width=12, command=clear_text)
 clear_btn.grid(row=2, column=3)
+
+#populate date
+populate_list()
 
 
 app.title('Part manager')

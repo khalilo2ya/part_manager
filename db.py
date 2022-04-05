@@ -23,9 +23,9 @@ class Database:
         self.conn.close()
 
 db=Database('store.db')        
-db.insert("4GB DDR4 Ram","John Doe", "Microcenter","160")
-db.insert("2GB DDR4 Ram","John Doe", "Microcenter","120")
-db.insert("8GB DDR4 Ram","John Doe", "Microcenter","200")
-db.insert("Nvidia RTX 2080","John Doe", "Microcenter","679")
-db.insert("600w Corsair PSU","John Doe", "Microcenter","130")
+# db.insert("4GB DDR4 Ram","John Doe", "Microcenter","160")
+# db.insert("2GB DDR4 Ram","John Doe", "Microcenter","120")
+# db.insert("8GB DDR4 Ram","John Doe", "Microcenter","200")
+# db.insert("Nvidia RTX 2080","John Doe", "Microcenter","679")
+# db.insert("600w Corsair PSU","John Doe", "Microcenter","130")
 
