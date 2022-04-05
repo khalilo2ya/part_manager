@@ -44,7 +44,8 @@ def select_item(event):
 
 
 def remove_item():
-    print('Remove')
+    db.remove(selected_item[0])
+    populate_list()
 
 def clear_text():
     print('clear')
